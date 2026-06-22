@@ -1,0 +1,90 @@
+body {
+  background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+  font-family: 'Tajawal', sans-serif;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.contact-container {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 40px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 0 25px rgba(0, 255, 213, 0.2);
+  backdrop-filter: blur(12px);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #00ffd5;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #ccc;
+}
+
+input, textarea {
+  padding: 12px;
+  background-color: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 15px;
+  outline: none;
+}
+
+input:focus, textarea:focus {
+  border-color: #00ffd5;
+  box-shadow: 0 0 8px #00ffd5;
+}
+
+button {
+  margin-top: 20px;
+  background-color: #00ffd5;
+  color: #000;
+  font-weight: bold;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #00bfa6;
+}
+
+#success-message {
+  color: #00ffd5;
+  margin-top: 20px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.hidden {
+  display: none;
+}
+
+footer {
+  margin-top: 25px;
+  text-align: center;
+  font-size: 13px;
+  color: #888;
+}

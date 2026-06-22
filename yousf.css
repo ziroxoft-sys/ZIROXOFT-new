@@ -1,0 +1,277 @@
+/* إعادة تهيئة وإعداد الخلفية المظلمة */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: radial-gradient(circle at center, #1a0805 0%, #0a0302 60%, #000000 100%);
+    color: #f5f5f5;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* تأثير البرق والخلفية النارية الخفيفة */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url('https://www.transparenttextures.com/patterns/dark-matter.png');
+    opacity: 0.15;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* الحاوية الرئيسية للكارت */
+.portfolio-container {
+    max-width: 750px;
+    width: 100%;
+    background: linear-gradient(135deg, rgba(20, 10, 8, 0.85) 0%, rgba(10, 5, 4, 0.95) 100%);
+    border: 2px solid rgba(212, 175, 55, 0.2);
+    border-radius: 24px;
+    padding: 50px 30px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 
+                0 0 40px rgba(139, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    z-index: 2;
+    transform: translateY(30px);
+    opacity: 0;
+    animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* --- الدائرة الملكية الكبيرة العظمى --- */
+.profile-frame {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    margin: 0 auto 35px auto;
+}
+
+/* الإطار الخارجي الذهبي المتحرك */
+.avatar-circle {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #000;
+    border: 4px solid #d4af37;
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.4), 
+                inset 0 0 25px rgba(212, 175, 55, 0.3),
+                0 0 15px rgba(255, 69, 0, 0.5);
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+/* تعديل حجم واحتواء الصورة */
+.avatar-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.9) contrast(1.1);
+}
+
+/* التاج الملكي الفخم فوق الدائرة */
+.crown-icon {
+    position: absolute;
+    top: -38px;
+    left: 50%;
+    transform: translateX(-50%) scale(0.9);
+    color: #d4af37;
+    font-size: 3rem;
+    filter: drop-shadow(0 4px 10px rgba(212,175,55,0.6)) drop-shadow(0 0 15px #ff4500);
+    z-index: 3;
+    animation: floatCrown 3s ease-in-out infinite;
+}
+
+/* هالة الطاقة النارية المتحركة خلف الدائرة */
+.fire-glow {
+    position: absolute;
+    top: -10px; left: -10px; right: -10px; bottom: -10px;
+    background: linear-gradient(45deg, #ff4500, #d4af37, #ff0000, #d4af37);
+    border-radius: 50%;
+    z-index: 1;
+    filter: blur(15px);
+    opacity: 0.6;
+    animation: spinGlow 6s linear infinite;
+}
+
+/* --- النصوص والقصة --- */
+.name-title {
+    font-size: 2.5rem;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8), 0 0 15px rgba(212,175,55,0.4);
+    margin-bottom: 5px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: #ff5722;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    display: inline-block;
+    border-bottom: 1px solid rgba(255,87,34,0.3);
+    padding-bottom: 5px;
+}
+
+/* قصة الكفاح والطموح المحفزة */
+.story-text {
+    font-size: 1.15rem;
+    line-height: 1.9;
+    color: #e0e0e0;
+    text-align: justify;
+    margin-bottom: 40px;
+    padding: 0 15px;
+    position: relative;
+}
+
+.story-text p {
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+}
+
+.story-text i.quote-icon {
+    color: rgba(212, 175, 55, 0.2);
+    font-size: 2rem;
+    position: absolute;
+}
+.story-text i.quote-right { right: -10px; top: -15px; }
+.story-text i.quote-left { left: -10px; bottom: -15px; }
+
+/* خط فاصل أنيق */
+.divider {
+    height: 1px;
+    background: linear-gradient(to left, transparent, rgba(212,175,55,0.5), transparent);
+    margin-bottom: 35px;
+}
+
+/* --- أزرار التواصل الـ Dark الاحترافية --- */
+.social-title {
+    font-size: 1.2rem;
+    color: #d4af37;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.social-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.btn-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(90deg, #0f0706 0%, #170b09 100%);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    padding: 16px 25px;
+    border-radius: 12px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-link i:first-child {
+    font-size: 1.4rem;
+    transition: transform 0.3s ease;
+}
+
+.btn-link .arrow-icon {
+    font-size: 0.9rem;
+    opacity: 0.5;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* تأثيرات الـ Hover الخاطفة للأنظار */
+.btn-link::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%; width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 69, 0, 0.15), transparent);
+    transition: all 0.6s ease;
+}
+
+.btn-link:hover::before {
+    left: 100%;
+}
+
+/* حركات مخصصة لكل زر عند الوقوف عليه */
+.btn-whatsapp:hover {
+    border-color: #25d366;
+    box-shadow: 0 0 20px rgba(37, 211, 102, 0.3);
+    color: #25d366;
+}
+.btn-telegram:hover {
+    border-color: #0088cc;
+    box-shadow: 0 0 20px rgba(0, 136, 204, 0.3);
+    color: #0088cc;
+}
+.btn-facebook:hover {
+    border-color: #1877f2;
+    box-shadow: 0 0 20px rgba(24, 119, 242, 0.3);
+    color: #1877f2;
+}
+
+.btn-link:hover i:first-child {
+    transform: scale(1.2) rotate(-10deg);
+}
+
+.btn-link:hover .arrow-icon {
+    transform: translateX(-5px);
+    opacity: 1;
+}
+
+/* تأثير التفاعل عند الضغط للـ Click */
+.btn-link:active {
+    transform: scale(0.97);
+}
+
+/* --- الأنيميشن وحركات الظهور --- */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes floatCrown {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-8px); }
+}
+
+@keyframes spinGlow {
+    100% { transform: rotate(360deg); }
+}
+
+/* تأثير تفاعلي إضافي على الماوس للمحيط الخارجي للدائرة */
+.profile-frame:hover .avatar-circle {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.6), 0 0 25px rgba(255, 69, 0, 0.7);
+}
+
+/* متوافق مع الموبايل تماماً */
+@media (max-width: 480px) {
+    .name-title { font-size: 2rem; }
+    .portfolio-container { padding: 40px 15px; }
+    .story-text { font-size: 1rem; }
+}

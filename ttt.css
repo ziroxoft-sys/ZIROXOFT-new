@@ -1,0 +1,189 @@
+/* خلفية متغيرة بألوان متداخلة */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  direction: rtl;
+  text-align: right;
+  background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #a18cd1, #fbc2eb);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+/* تحريك الخلفية */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.container {
+  max-width: 950px;
+  margin: 30px auto;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin: 10px 0 5px;
+  color: #333;
+}
+
+input[type="text"], textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+textarea {
+  height: 60px;
+  background: #f0f8ff;
+}
+
+.options-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: nowrap;
+  margin-bottom: 15px;
+}
+
+.option-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background: #e3f2fd;
+  border: 1px solid #2196f3;
+  border-radius: 8px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.option-item input {
+  width: 100%;
+  padding: 6px;
+  border: none;
+  background: transparent;
+  font-size: 15px;
+}
+
+button {
+  margin-top: 10px;
+  margin-right: 10px;
+  padding: 10px 20px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+.hidden {
+  display: none;
+}
+
+/* المعاينة النهائية */
+#previewContainer {
+  margin-top: 40px;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+}
+
+#preview {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.question-preview {
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 8px;
+  background: #fff7e6;
+  page-break-inside: avoid;
+}
+
+.question-title {
+  font-weight: bold;
+  margin-bottom: 12px;
+  font-size: 18px;
+  color: #444;
+  background: #fff0b3;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+.preview-options {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.preview-option {
+  flex: 1;
+  background: #e1f5fe;
+  border: 1px solid #81d4fa;
+  border-radius: 6px;
+  padding: 8px 12px;
+  box-sizing: border-box;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ✅ حاوية الإشعارات */
+.notification-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+/* ✅ شكل الإشعار */
+.notification {
+  background-color: #1a1a1a;
+  color: #fff;
+  padding: 12px 20px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #00ffa2;
+  animation: fadeInOut 4s ease-in-out;
+  font-weight: bold;
+}
+
+/* ✨ أنيميشن دخول وخروج */
+@keyframes fadeInOut {
+  0%   { opacity: 0; transform: translateY(-20px); }
+  10%  { opacity: 1; transform: translateY(0); }
+  90%  { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-20px); }
+}

@@ -1,0 +1,131 @@
+/* إعدادات عامة خلفية داكنة مريحة للعير */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #0b0f19;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* حاوية الفيديو المودرن */
+.video-container {
+    position: relative;
+    width: 90%;
+    max-width: 850px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    background: #000;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.video-container video {
+    width: 100%;
+    display: block;
+    cursor: pointer;
+}
+
+/* شريط التحكم السحري - يظهر عند حرك الماوس */
+.video-controls {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(11, 15, 25, 0.95));
+    padding: 15px 20px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    direction: ltr; /* لجعل شريط الوقت والتقدم من اليسار لليمين هندسياً */
+}
+
+.video-container:hover .video-controls {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* شريط التقدم (Progress Bar) */
+.progress-area {
+    height: 6px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #3b82f6; /* لون أزرق نيون مميز التحديثات */
+    border-radius: 10px;
+    position: relative;
+    transition: width 0.1s linear;
+}
+
+.progress-bar span {
+    position: absolute;
+    right: -5px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    outline: 3px solid #3b82f6;
+    background: #fff;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.progress-area:hover .progress-bar span {
+    opacity: 1;
+}
+
+/* أزرار التحكم */
+.controls-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.right-controls, .left-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.control-btn {
+    background: none;
+    border: none;
+    color: #e2e8f0;
+    font-size: 16px;
+    cursor: pointer;
+    transition: color 0.2s;
+    padding: 5px;
+}
+
+.control-btn:hover {
+    color: #3b82f6;
+}
+
+.time-display {
+    color: #94a3b8;
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+}
+
+/* شارة التحديث المضيئة */
+.badge {
+    background: rgba(59, 130, 246, 0.15);
+    color: #60a5fa;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: system-ui, sans-serif;
+}

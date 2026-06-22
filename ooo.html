@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>تحليل الدرجات</title>
+  
+  <meta name="keywords" content="تحليل درجات, حساب الدرجات, كشف النتيجة, حساب المجموع, نظام الدرجات, تحليل النتيجة, نتيجة الطالب, برنامج الدرجات, درجات الطالب, Ziroxoft, حساب معدل, حساب GPA, حساب التقدير, تقدير الدرجات, درجات اونلاين, كشف درجات اونلاين, نظام كشف الدرجات, تحليل كشف الدرجات, برنامج حساب المجموع, معرفة مجموع الدرجات">
+  
+  
+ <link rel="icon" type=" assets/hero-icons.png " href="  assets/hero-icons.png     ">
+  
+  <meta name="description" content="حلل درجاتك بسهولة مع نظام ذكي يوضح لك المجموع، التقدير، ونقاط القوة والضعف بدقة وسرعة.">
+  
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1621396288409139"
+     crossorigin="anonymous"></script>
+  
+  <link rel="stylesheet" href="ooo.css" />
+
+  <!-- مكتبات PDF والرسم -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>📊 تحليل الدرجات Ziroxoft</h1>
+
+    <div class="info">
+      <label>🏫 اسم المدرسة <input type="text" id="school" /></label>
+      <label> 👨‍🏫اسم المعلم/ه<input type="text" id="teacher" /></label>
+      <label>📚 المادة <input type="text" id="subject" /></label>
+      <label>🗓️ الفصل الدراسي <input type="text" id="semester" /></label>
+      <label>📅 السنة الدراسية <input type="text" id="year" /></label>
+      <label>📏 نوع القياس <input type="text" id="measurement" /></label>
+      <label>🏷️ الصف <input type="text" id="grade" /></label>
+      <label>🎯 الدرجة النهائية <input type="number" id="final" /></label>
+      <label>✍️ درجات الطلاب (كل درجة في سطر):<br />
+        <textarea id="scores" rows="10" placeholder="20\n19\n18.5..."></textarea>
+      </label>
+    </div>
+
+    <button onclick="generateReport()">📋 توليد التقرير</button>
+    <button onclick="downloadPDF()">📥 تحميل PDF</button>
+
+    <div id="result" class="hidden">
+      <div class="box-group">
+        <div class="box"><strong>🏫 المدرسة:</strong> <span id="out_school"></span></div>
+        <div class="box"><strong>👨‍🏫 المعلم/ه:</strong> <span id="out_teacher"></span></div>
+        <div class="box"><strong>📚 المادة:</strong> <span id="out_subject"></span></div>
+        <div class="box"><strong>🗓️ الفصل:</strong> <span id="out_semester"></span></div>
+        <div class="box"><strong>📅 السنة:</strong> <span id="out_year"></span></div>
+        <div class="box"><strong>📏 نوع القياس:</strong> <span id="out_measurement"></span></div>
+        <div class="box"><strong>🏷️ الصف:</strong> <span id="out_grade"></span></div>
+        <div class="box"><strong>🎯 الدرجة النهائية:</strong> <span id="out_final"></span></div>
+      </div>
+
+      <h3>📊 توزيع التصنيفات</h3>
+      <canvas id="chart" width="400" height="200"></canvas>
+      <div class="box-group" id="categories-boxes"></div>
+
+      <h3>📌 تحليل تفصيلي للنسب</h3>
+      <div class="vertical-analysis" id="detailed-analysis"></div>
+
+      <h3>📌 الإحصائيات</h3>
+      <div class="box-group">
+        <div class="box"><strong>أعلى درجة:</strong> <span id="out_max"></span></div>
+        <div class="box"><strong>أقل درجة:</strong> <span id="out_min"></span></div>
+        <div class="box"><strong>متوسط الدرجات:</strong> <span id="out_avg"></span></div>
+      </div>
+    </div>
+  </div>
+
+ 
+ 
+ 
+ 
+ <script type="module" src="tracker.js"></script>
+  <script src="ooo.js"></script>
+</body>
+</html>

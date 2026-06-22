@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Cairo', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  overflow: hidden;
+  animation: gradientShift 10s ease infinite;
+  background-size: 400% 400%;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 40px;
+  width: 90%;
+  max-width: 420px;
+  text-align: center;
+  box-shadow: 0 0 40px rgba(0, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  transition: 0.4s;
+}
+
+.container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 60px rgba(0, 255, 255, 0.35);
+}
+
+h1 {
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  color: #00fff7;
+  text-shadow: 0 0 10px #00fff7;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  margin-bottom: 20px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  transition: 0.3s;
+}
+
+input[type="text"]:focus {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+button {
+  flex: 1;
+  padding: 10px 12px;
+  background: linear-gradient(135deg, #00fff7, #0078ff);
+  border: none;
+  border-radius: 10px;
+  color: #000;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px #00fff7;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #0078ff, #00fff7);
+  transform: scale(1.05);
+  box-shadow: 0 0 25px #00fff7;
+}
+
+#qr-container {
+  margin-top: 25px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  box-shadow: inset 0 0 20px rgba(0, 255, 255, 0.2);
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+canvas {
+  width: 200px;
+  height: 200px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* تأثير توهج عند التحميل */
+button:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 30px #00fff7;
+}
+
+/* تأثير نجوم خلفية خفيفة */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+  background-size: 80px 80px;
+  animation: moveStars 50s linear infinite;
+}
+
+@keyframes moveStars {
+  from { transform: translateY(0); }
+  to { transform: translateY(-500px); }
+}

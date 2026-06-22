@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ziroxoft PDF Studio</title>
+
+<link rel="stylesheet" href="pdf-studio.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+
+
+
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1621396288409139"
+     crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header class="topbar">
+
+<div class="logo-area">
+
+<div class="logo-icon">
+<i class="fa-solid fa-cube"></i>
+</div>
+
+<div class="logo-text">
+<h2>ZIROXOFT</h2>
+<span>PDF STUDIO</span>
+</div>
+
+</div>
+
+<div class="stats-bar">
+
+<div class="stat-box">
+<i class="fa-regular fa-image"></i>
+<span id="imagesCount">0</span>
+صور
+</div>
+
+<div class="stat-box">
+<i class="fa-regular fa-file"></i>
+<span id="pagesCount">0</span>
+صفحات
+</div>
+
+<div class="stat-box">
+<i class="fa-solid fa-database"></i>
+<span id="totalSize">0 MB</span>
+الحجم المتوقع
+</div>
+
+</div>
+
+<div class="top-actions">
+
+<button id="newProjectBtn">
+<i class="fa-solid fa-plus"></i>
+مشروع جديد
+</button>
+
+
+
+
+
+</div>
+
+</header>
+
+<!-- MAIN -->
+
+<div class="main-layout">
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+<div class="sidebar-header">
+
+<h3>المشاريع</h3>
+
+<button id="addImagesBtn">
+<i class="fa-solid fa-plus"></i>
+إضافة صور
+</button>
+
+</div>
+
+<input
+type="file"
+id="imageInput"
+accept="image/*"
+multiple
+hidden>
+
+<div id="projectImages" class="project-images">
+
+<!-- يتم إنشاء الصور هنا -->
+
+</div>
+
+<div class="drag-info">
+
+<i class="fa-solid fa-hand-pointer"></i>
+
+اسحب الصور لترتيب الصفحات
+
+</div>
+
+</aside>
+
+<!-- PREVIEW -->
+
+<section class="preview-section">
+
+<div class="preview-title">
+
+<h3>معاينة الصورة</h3>
+
+</div>
+
+<div class="preview-box">
+
+<img
+id="mainPreview"
+src=""
+alt="">
+
+<div id="emptyPreview">
+
+<i class="fa-regular fa-image"></i>
+
+<p>اختر صورة للمعاينة</p>
+
+</div>
+
+</div>
+
+<div class="zoom-controls">
+
+<button id="zoomOut">
+<i class="fa-solid fa-minus"></i>
+</button>
+
+<span id="zoomValue">100%</span>
+
+<button id="zoomIn">
+<i class="fa-solid fa-plus"></i>
+</button>
+
+</div>
+
+<div class="tools-row">
+
+<button id="rotateLeft">
+<i class="fa-solid fa-rotate-left"></i>
+تدوير يسار
+</button>
+
+<button id="rotateRight">
+<i class="fa-solid fa-rotate-right"></i>
+تدوير يمين
+</button>
+
+<button id="cropBtn">
+<i class="fa-solid fa-crop"></i>
+قص الصورة
+</button>
+
+<button id="portraitBtn">
+<i class="fa-regular fa-rectangle-portrait"></i>
+طولي
+</button>
+
+<button id="landscapeBtn">
+<i class="fa-regular fa-rectangle-landscape"></i>
+عرضي
+</button>
+
+<button id="enhanceBtn">
+<i class="fa-solid fa-wand-magic-sparkles"></i>
+تحسين الجودة
+</button>
+
+</div>
+
+</section>
+
+<!-- SETTINGS -->
+
+<aside class="settings-panel">
+
+<h2>إعدادات PDF</h2>
+
+<div class="setting-group">
+
+<label>حجم الصفحة</label>
+
+<select id="pageSize">
+
+<option value="A4">A4</option>
+
+<option value="A3">A3</option>
+
+<option value="Letter">Letter</option>
+
+</select>
+
+</div>
+
+<div class="setting-group">
+
+<label>اتجاه الصفحة</label>
+
+<div class="options">
+
+<button class="active" id="portraitSetting">
+طولي
+</button>
+
+<button id="landscapeSetting">
+عرضي
+</button>
+
+</div>
+
+</div>
+
+<div class="setting-group">
+
+<label>الجودة</label>
+
+<div class="options">
+
+<button>عادية</button>
+
+<button class="active">عالية</button>
+
+<button>فائقة</button>
+
+</div>
+
+</div>
+
+<div class="setting-group">
+
+<label>الهوامش</label>
+
+<div class="options">
+
+<button>بدون</button>
+
+<button class="active">صغيرة</button>
+
+<button>متوسطة</button>
+
+<button>كبيرة</button>
+
+</div>
+
+</div>
+
+<div class="setting-group">
+
+<label>لون الخلفية</label>
+
+<input
+type="color"
+id="backgroundColor"
+value="#ffffff">
+
+</div>
+
+<div class="setting-group">
+
+<label>تحسين تلقائي</label>
+
+<label class="switch">
+
+<input
+type="checkbox"
+checked
+id="autoEnhance">
+
+<span class="slider"></span>
+
+</label>
+
+</div>
+
+<div class="setting-group">
+
+<label>ضغط الصور</label>
+
+<input
+type="range"
+min="10"
+max="100"
+value="80"
+id="compressionRange">
+
+</div>
+
+</aside>
+
+</div>
+
+<!-- FOOTER BUTTON -->
+
+<div class="bottom-bar">
+
+<button id="createPdfBtn">
+
+<i class="fa-solid fa-file-pdf"></i>
+
+إنشاء PDF احترافي
+
+</button>
+
+</div>
+
+<!-- LOADER -->
+
+<div id="loaderOverlay">
+
+<div class="loader-box">
+
+<div class="loader-circle"></div>
+
+<h3>جاري إنشاء PDF</h3>
+
+<p id="loaderPercent">0%</p>
+
+</div>
+
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
+
+
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css">
+
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"></script>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/pica@9.0.1/dist/pica.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+<div id="loaderOverlay">
+
+<div class="loader-box">
+
+<div class="loader-circle"></div>
+
+<h3>
+جاري إنشاء ملف PDF
+</h3>
+
+<p>
+يرجى الانتظار...
+</p>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+<script src="pdf-studio.js"></script>
+
+
+
+
+</body>
+
+</html>
