@@ -1,7 +1,6 @@
 let qr;
 
 
-
  
  async function generateQR() {
  
@@ -71,28 +70,3 @@ function copyQR() {
 
 
 
-
-
-// 📢 إنشاء إشعار متوهج
-function showNotification(message) {
-  const container = document.querySelector('.notification-container') || createContainer();
-
-  const notification = document.createElement('div');
-  notification.className = 'notification';
-  notification.textContent = message;
-
-  container.appendChild(notification);
-
-  // حذف بعد 4 ثواني
-  setTimeout(() => {
-    notification.remove();
-  }, 4000);
-}
-
-// 🧱 إنشاء الحاوية إذا مش موجودة
-function createContainer() {
-  const container = document.createElement('div');
-  container.className = 'notification-container';
-  document.body.appendChild(container);
-  return container;
-}
