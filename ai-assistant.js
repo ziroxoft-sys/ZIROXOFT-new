@@ -1,9 +1,11 @@
 let qr;
 
-
-
-
-// 1. تعديل دالة التوليد (أضفنا event بين القوسين)
+// دالة تفاعل الأداة
+async function useTool() {
+  console.log("الأداة جاهزة والتفاعل نشط.");
+}
+ 
+// 1. دالة توليد الـ QR
 async function generateQR(event) {
   const url = document.getElementById("url-input").value.trim();
  
@@ -25,7 +27,7 @@ async function generateQR(event) {
   }
 }
 
-// 2. تعديل دالة تحميل الـ PDF (أضفنا event وتحقق من الكود)
+// 2. دالة تحميل الـ PDF
 function downloadPDF(event) {
   const canvas = document.getElementById("qr-code");
   if (!canvas || canvas.width <= 100) {
@@ -40,7 +42,7 @@ function downloadPDF(event) {
   doc.save("qr-code.pdf");
 }
 
-// 3. تعديل دالة نسخ الكود (أضفنا event واستبدلنا الـ alert بالإشعار بتاعك)
+// 3. دالة نسخ الـ QR (تشغل الإعلان هنا حصرياً + النسخ + الإشعار المتوهج)
 function copyQR(event) {
   const canvas = document.getElementById("qr-code");
   if (!canvas || canvas.width <= 100) {
@@ -48,6 +50,12 @@ function copyQR(event) {
     return;
   }
 
+  // 🚀 تشغيل الإعلان حصرياً عند الضغط على زرار النسخ فقط ومنع تشغيله في الفراغ
+  const adScript = document.createElement("script");
+  adScript.src = "https://pl27679956.effectivecpmnetwork.com/e2/96/92/e2969277e330fe8328e30a8bcbb86e20.js";
+  document.body.appendChild(adScript);
+
+  // 📋 تنفيذ عملية نسخ الكيو آر
   canvas.toBlob((blob) => {
     if (!blob) {
       alert("حدث خطأ في معالجة الصورة.");
@@ -55,13 +63,69 @@ function copyQR(event) {
     }
     const item = new ClipboardItem({ "image/png": blob });
     navigator.clipboard.write([item]).then(() => {
-      // هنا استخدمنا الإشعار المتوهج بتاعك تلقائياً بدل الـ alert القديم
+      // إشعارك المتوهج الجميل
       showNotification("تم نسخ رمز QR بنجاح!");
     }).catch(err => {
       alert("حدث خطأ أثناء النسخ: " + err);
     });
   });
 }
+
+// 📢 إنشاء إشعار متوهج
+function showNotification(message) {
+  const container = document.querySelector('.notification-container') || createContainer();
+
+  const notification = document.createElement('div');
+  notification.className = 'notification';
+  notification.textContent = message;
+
+  container.appendChild(notification);
+
+  // حذف بعد 4 ثواني
+  setTimeout(() => {
+    notification.remove();
+  }, 4000);
+}
+
+// 🧱 إنشاء الحاوية إذا لم تكن موجودة
+function createContainer() {
+  const container = document.createElement('div');
+  container.className = 'notification-container';
+  document.body.appendChild(container);
+  return container;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
