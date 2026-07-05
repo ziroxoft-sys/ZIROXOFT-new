@@ -1,6 +1,7 @@
 let qr;
 
 
+
  
  async function generateQR() {
  
