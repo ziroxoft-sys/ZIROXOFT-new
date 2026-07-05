@@ -1,23 +1,18 @@
 let qr;
 
 
- 
- async function generateQR() {
- 
- 
+
+
+// 1. تعديل دالة التوليد (أضفنا event بين القوسين)
+async function generateQR(event) {
   const url = document.getElementById("url-input").value.trim();
  
- 
- 
   if (!url) {
-  alert("من فضلك أدخل رابطًا صالحًا.");
-  return;
-}
+    alert("من فضلك أدخل رابطًا صالحًا.");
+    return;
+  }
 
-await useTool();
-  
-  
-  
+  await useTool();
   
   if (!qr) {
     qr = new QRious({
@@ -30,9 +25,10 @@ await useTool();
   }
 }
 
-function downloadPDF() {
+// 2. تعديل دالة تحميل الـ PDF (أضفنا event وتحقق من الكود)
+function downloadPDF(event) {
   const canvas = document.getElementById("qr-code");
-  if (!canvas.toDataURL) {
+  if (!canvas || canvas.width <= 100) {
     alert("لم يتم توليد QR بعد.");
     return;
   }
@@ -44,22 +40,89 @@ function downloadPDF() {
   doc.save("qr-code.pdf");
 }
 
-function copyQR() {
+// 3. تعديل دالة نسخ الكود (أضفنا event واستبدلنا الـ alert بالإشعار بتاعك)
+function copyQR(event) {
   const canvas = document.getElementById("qr-code");
-  if (!canvas.toDataURL) {
+  if (!canvas || canvas.width <= 100) {
     alert("لم يتم توليد QR بعد.");
     return;
   }
 
   canvas.toBlob((blob) => {
+    if (!blob) {
+      alert("حدث خطأ في معالجة الصورة.");
+      return;
+    }
     const item = new ClipboardItem({ "image/png": blob });
     navigator.clipboard.write([item]).then(() => {
-      alert("تم نسخ رمز QR بنجاح!");
+      // هنا استخدمنا الإشعار المتوهج بتاعك تلقائياً بدل الـ alert القديم
+      showNotification("تم نسخ رمز QR بنجاح!");
     }).catch(err => {
       alert("حدث خطأ أثناء النسخ: " + err);
     });
   });
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
