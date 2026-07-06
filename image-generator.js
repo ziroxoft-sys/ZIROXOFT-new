@@ -1,8 +1,5 @@
 const apiKey = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYzRjMWMxZWJhNGM1OWNkZmUxNTFlZmMxZTVhYmZiNzhhYmQxYjhjYzMxODFkN2U2MTgwYjFkMzFmMzdhYTljYTYyZjA4MWFhNTFmYjFhZTQiLCJpYXQiOjE3NTI0MTY3OTEuMzI0NDIyLCJuYmYiOjE3NTI0MTY3OTEuMzI0NDI0LCJleHAiOjQ5MDgwOTAzOTEuMzIwNDYzLCJzdWIiOiI3MjQyMjk2OCIsInNjb3BlcyI6WyJ1c2VyLnJlYWQiLCJ1c2VyLndyaXRlIiwidGFzay5yZWFkIiwidGFzay53cml0ZSIsIndlYmhvb2sucmVhZCIsIndlYmhvb2sud3JpdGUiLCJwcmVzZXQucmVhZCIsInByZXNldC53cml0ZSJdfQ.Rzqa4JQOI5cNKsTVRCVYBzdzOj284pLYN9NJHc14zYyL3Viz0t_WC_9D6NpVQLnPUtwHp75NaMjKIcLGxZNqe9gqafgv5PlAfoGXCryOVmVKpdQofxVWtQsCMjXMTgKR6AHYeyd-y6FRD32ZH5ZenorOe7PeiZZuo_60dmMgAvvTnW6ojLmXRbj5VgB9_EJMBBxyd5g8PpjE7PqwE7XrW40U5XfZw50a62ZprE4U-H-uvFOwRL8Wj5fBNl9gS2IstzK8_tYjpvrgQfHWqHlshiXJgM9qYjDePgBGEAqyTZyyKcvbN7Rmh4iNZ02GwBEdB0cJPZsD4jnyfLhib00bvBo-8rdYBL5SA1oTsNvMdAX2qEYzlSmKP7Zfe5OOCubWR6nRWcwULMoc3cg3JfRMiA1owAFMhyrBvn7OY2t97CsWBoknkh_DaQYKSIzSZMbW7Yj9tAjbTDX3Yt3kk-2bwLdBrF0kQJas3xx5yUgjvYbGraZFafPnSlAAtmwC_HrFj9XbsVBUcyLnaizAkKP_S_K8wDcgIxyodtjgyBSGNGiOExWLcaAw1Oyyybkz14-ZeVz2MHhrx1mJLby3Xk-iCnec1yK-KCo0YB8pruViE6iydKViK3_vc_klT7KQujJlFuslPaVe896SNG1KIs13Xd5FCUuBnVA0CAxWx9gG9uA";
 
-// متغير عالمي لحفظ رابط التحميل القادم من CloudConvert لكل عملية تحويل
-let globalFileUrl = ""; 
-
 document.getElementById("convertBtn").addEventListener("click", async () => {
   const input = document.getElementById("videoInput");
   const status = document.getElementById("status");
@@ -12,6 +9,9 @@ document.getElementById("convertBtn").addEventListener("click", async () => {
     status.innerText = "يرجى اختيار فيديو أولاً.";
     return;
   }
+
+await useTool();
+
 
   const file = input.files[0];
   status.innerText = "⬆️ جاري رفع الفيديو وتحويله...";
@@ -78,10 +78,8 @@ document.getElementById("convertBtn").addEventListener("click", async () => {
       await new Promise(r => setTimeout(r, 2000)); // wait 2s
     }
 
-    // حفظ الرابط في المتغير العالمي لاستخدامه فور تخطي الإعلان بنجاح
-    globalFileUrl = fileUrl; 
-
     status.innerText = "✅ تم التحويل! اضغط لتحميل الملف.";
+    downloadLink.href = fileUrl;
     downloadLink.style.display = "inline-block";
 
   } catch (err) {
@@ -89,31 +87,3 @@ document.getElementById("convertBtn").addEventListener("click", async () => {
     status.innerText = "❌ فشل في التحويل، حاول مرة أخرى.";
   }
 });
-
-// دالة التحكم في زر التحميل لفتح نافذة عروض CPAGrip ومنع التحميل المباشر
-function openGripLocker(event) {
-    event.preventDefault(); // منع المتصفح من الانتقال الافتراضي للرابط
-    
-    if (typeof call_locker === "function") {
-        call_locker(); // إظهار نافذة المهام (Locker) للمخدم فوق الموقع
-    } else {
-        alert("برجاء إيقاف مانع الإعلانات (AdBlocker) لتتمكن من التحميل.");
-    }
-}
-
-/* الدالة الرسمية التلقائية من CPAGrip
-   تُستدعى ذاتياً بمجرد إكمال المستخدم المهمة بنجاح لتحميل ملفه
-*/
-function cpagrip_complete_conversion() {
-    if (globalFileUrl) {
-        // تحويل المتصفح للرابط الديناميكي المحفوظ لبدء تحميل الملف
-        window.location.href = globalFileUrl; 
-    } else {
-        alert("حدث خطأ في جلب الملف، يرجى إعادة المحاولة.");
-    }
-}
-
-// دالة احتياطية متوافقة مع التحديثات الجديدة لأكواد سكريبت CPAGrip
-function cpagrip_conversion() {
-    cpagrip_complete_conversion();
-}
